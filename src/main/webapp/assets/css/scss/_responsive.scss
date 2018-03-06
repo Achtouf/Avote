@@ -1,0 +1,238 @@
+@media all and (max-width: 1080px){
+  .graphic-cntr{
+    .graphic-info-cntr,
+    .grid-half,
+    .graphic-svg{
+      max-width: 100%;
+      width:100%;
+    }
+  }
+
+  .element-list{
+    min-width: 200px;
+    max-width: none;
+  }
+
+  .body{
+    //max-width: calc(100% - 260px);
+  }
+
+  .body-section{
+    &.is-visible{
+      padding: 0 15px 20px;
+    }
+  }
+
+  #not-yet-voted-poll-container,
+  #created-poll-container,
+  #voted-poll-container{
+    max-width: 100%;
+
+    > .grid-row{
+      flex-direction: column;
+
+      .grid__element{
+        width:100%;
+        max-width: none;
+      }
+    }
+  }
+
+  .element-list{
+    .list-scroll{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+
+      .element__item{
+        width: 170px;
+        min-width: 170px;
+        height: 50px;
+        max-height: 50px;
+
+        text-overflow: ellipsis;
+        font-size: rem(12);
+
+        overflow: hidden;
+
+        &:not(:last-child){
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 940px) {
+  .body-cntr{
+    max-width: calc(100vw - 60px);
+  }
+
+  .grid__element{
+    padding: 10px;
+  }
+
+  .statistics-cntr{
+    padding: 0 10px;
+
+    .graphic-counter-cntr{
+      padding: 10px 0;
+    }
+  }
+
+  #not-yet-voted-poll-container,
+  #created-poll-container,
+  #voted-poll-container{
+    .big-cntr{
+      max-height: calc(100vh - 260px);
+    }
+  }
+
+  .graphic-cntr{
+    .graphic-info-cntr{
+      .graphic-info-item{
+        //padding: 10px 0;
+      }
+    }
+  }
+
+  .header-cntr{
+    max-width: 60px;
+    min-width: 60px;
+
+    transition: none;
+
+    ~ .body-cntr{
+      //width: calc(100% - 70px);
+    }
+
+    .header-banner{
+      .header-banner__navigation{
+        left: 100%;
+
+        width: 250px;
+
+        transition: transform 0;
+
+        &.is-visible{
+          transition: transform 0 !important;
+        }
+      }
+
+      .header-banner__profile{
+        .header-banner__profile_name{
+          display: none;
+        }
+
+        .header-banner__profile-img{
+          margin: 0 auto;
+        }
+      }
+
+      .icon-arrow{
+        display: none;
+      }
+    }
+
+    .header-navigation{
+      .header-navigation__item{
+        outline: 0;
+
+        a{
+          padding: 20px 19px;
+          text-align: center;
+        }
+        b{
+          display: none;
+        }
+      }
+    }
+  }
+
+  .body-notification-cntr{
+    max-width: 230px;
+  }
+}
+
+@media all and (max-width: 620px) {
+  .header-cntr{
+    max-width: 54px;
+    min-width: 54px;
+    width: 54px;
+  }
+
+  .body-cntr{
+    max-width: calc(100vw - 54px);
+  }
+
+  .button-bar-part{
+    max-width: 50%;
+
+    .special-input{
+      max-width: 100% !important;
+      min-width: 0 !important;
+
+      width: 100%;
+    }
+  }
+
+  .statistics-cntr{
+    padding: 0;
+  }
+
+  .graphic-cntr{
+    flex-direction: column;
+
+    .graphic-info-cntr{
+      .graphic-info-item{
+        padding: 10px;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 500px) {
+  .submit-input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .form-col-cntr,
+  .form-row-cntr{
+    flex-direction: column;
+    margin-right: 0;
+
+    max-width: 100% !important;
+    width: 100% !important;
+
+
+
+    &.half-cntr{
+      max-width: 100% !important;
+      width: 100% !important;
+
+      &:not(:last-child){
+        padding-right: 0;
+      }
+    }
+  }
+
+  .floating-nav{
+    width: 270px;
+  }
+}
+
+@media all and (max-width: 400px) {
+  .graphic-cntr{
+    .graphic-svg{
+      svg circle{
+        stroke-width: 35px;
+
+        &:hover{
+          stroke-width: 40px;
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,160 @@
+.dark-mode{
+	#filter-anonymous,
+	#filter-published {
+		background-color: $medium-grey;
+		color: $light-grey;
+
+		&.is-active{
+			background-color: $main;
+			color: white;
+		}
+	}
+
+	#notification-nav-cntr {
+		&:after{
+			color: $soft-grey;
+		}
+		.floating-nav__item {
+			background-color: darken($dark-grey, 3%);
+		}
+	}
+
+		.fake-input{
+		color: white;
+	}
+
+	.button-bar{
+		border-bottom-color: $dark-black;
+	}
+
+	.special-input{
+		color: white;
+
+		&:active,
+		&:focus{
+			background-color: rgba($black, 0.3) !important;
+		}
+	}
+
+	.element__item{
+		border: 1px $dark-black solid;
+		background-color: $medium-grey;
+
+		color: white;
+
+		&.is-active{
+			border: 1px $main solid;
+			background-color: $medium-grey;
+
+			color: white;
+		}
+	}
+
+	input[type="text"],
+	input[type="number"],
+	select{
+		background-color: lighten($black, 5%);
+		color: white;
+	}
+
+	.color-picker{
+		background-color: $black;
+	}
+
+	.color-item,
+	.color-cntr{
+		border: 1px white solid;
+	}
+
+	.color-cntr{
+		bottom:7px;
+	}
+
+	.big-cntr{
+		border: 1px $dark-black solid;
+	}
+
+	.popup-content{
+		background-color: $dark-black;
+		color: white;
+
+		.form-cntr{
+			color: white;
+		}
+	}
+
+	.header-cntr{
+		background-color: $black;
+
+		.header-banner__navigation{
+			background-color: darken($dark-grey, 1%);
+
+			.profile-nav__item{
+				color: white;
+
+				span{
+					&:before{
+						color: white;
+					}
+				}
+				
+				&:not(:last-child){
+					border-bottom: 2px solid $black;
+				}
+
+				&:hover{
+					background-color: darken($dark-grey, 3%);
+				}
+			}
+		}
+	}
+
+	.body{
+		background-color: $dark-grey;
+	}
+
+	.btn{
+		background-color: $medium-grey;
+
+		&:hover{
+			color: $dark-grey;
+		}
+	}
+
+	.grid-row,
+	.grid-col{
+		.grid__element,
+		.element__item{
+			color: white;
+			background-color: $medium-grey;
+		}
+	}
+
+	.floating-nav{
+		background-color: darken($dark-grey, 3%);
+
+		.floating-nav__item{
+			color: white;
+
+			&:not(:last-child){
+				border-bottom: 2px solid $medium-grey;
+			}
+
+			&:hover{
+				background-color: darken($dark-grey, 1%);
+			}
+		}
+
+		&:before{
+			background-color: darken($dark-grey, 3%);
+		}
+	}
+
+	.canvas-cntr{
+		.canvas-info-cntr{
+			.canvas-info-item{
+				//color: white;
+			}
+		}
+	}
+}

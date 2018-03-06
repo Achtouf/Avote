@@ -1,0 +1,71 @@
+<div class="grid-col">
+    <h3>Profil de $user.getFirstName() $user.getLastName()</h3>
+    <div class="grid__element big-cntr">
+      #if($user.getAddress())
+      <form class="form-cntr" id="form-profile-udpate-address" id-data="$user.getUserId()" id-address="$user.getAddress().getAddressId()">
+        <div class="form-row-cntr">
+          <div class="form-col-cntr half-cntr">
+            <div class="form-col-cntr">
+                <label for="user-address-location">Adresse</label>
+                <input type="text" id="user-address-location" value="$user.getAddress().getLocation()"/>
+            </div>
+            <div class="form-col-cntr">
+                <label for="user-address-city">Ville</label>
+                <input type="text" id="user-address-city" value="$user.getAddress().getCity()"/>
+            </div>
+          </div>
+          <div class="form-col-cntr half-cntr">
+            <div class="form-col-cntr">
+                <label for="user-address-zip-code">Code Postal</label>
+                <input type="text" id="user-address-zip-code" value="$user.getAddress().getZipCode()"/>
+            </div>
+            <div class="form-col-cntr">
+                <label for="user-address-country">Pays</label>
+                <input type="text" id="user-address-country" value="$user.getAddress().getCountry()"/>
+            </div>
+            <div class="form-row-cntr align-right">
+                <input type="submit" class="submit-input" id="save-profile-address" value="Enregistrer">
+            </div>
+          </div>
+        </div>
+      </form>
+      #else
+      <form class="form-cntr" id="form-profile-udpate-address" id-data="$user.getUserId()">
+        <div class="form-row-cntr">
+          <div class="form-col-cntr half-cntr">
+            <div class="form-col-cntr">
+                <label for="user-address-location">Adresse</label>
+                <input type="text" id="user-address-location" value=""/>
+            </div>
+            <div class="form-col-cntr">
+                <label for="user-address-city">Ville</label>
+                <input type="text" id="user-address-city" value=""/>
+            </div>
+          </div>
+          <div class="form-col-cntr half-cntr">
+            <div class="form-col-cntr">
+                <label for="user-address-zip-code">Code Postal</label>
+                <input type="text" id="user-address-zip-code" value=""/>
+            </div>
+            <div class="form-col-cntr">
+                <label for="user-address-country">Pays</label>
+                <input type="text" id="user-address-country" value=""/>
+            </div>
+          </div>
+        </div>
+        <div class="form-row-cntr align-right">
+            <input type="submit" class="submit-input" id="save-profile-address" value="Enregistrer">
+        </div>
+      </form>
+      #end
+    </div>
+</div>
+<div class="grid-col grid-row simple-child">
+  <div class="grid__element big-cntr">
+    <h3>API KEY</h3>
+    <div class="form-row-cntr">
+      <input type="text" id="api-key-cntr" data-clipboard-target="#api-key-cntr" value="...">
+      <label class="btn btn-in-item" id="btn-copy" data-id="1" title="copier" for="api-key-cntr"><span class="icon-clipboard"></span></label>
+    </div>
+  </div>
+</div>

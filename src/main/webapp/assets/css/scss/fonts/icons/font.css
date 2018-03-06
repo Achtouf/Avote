@@ -1,0 +1,114 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('icomoon.eot?izxj9o');
+  src:  url('icomoon.eot?izxj9o#iefix') format('embedded-opentype'),
+    url('icomoon.ttf?izxj9o') format('truetype'),
+    url('icomoon.woff?izxj9o') format('woff'),
+    url('icomoon.svg?izxj9o#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change . */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-add-profile:before {
+  content: "\e904";
+}
+.icon-home2:before {
+  content: "\e903";
+}
+.icon-arrow:before {
+  content: "\e907";
+  color: #fff;
+}
+.icon-edit-profile:before {
+  content: "\e908";
+}
+.icon-home:before {
+  content: "\e914";
+}
+.icon-notif2:before {
+  content: "\e915";
+}
+.icon-pref2:before {
+  content: "\e916";
+}
+.icon-results:before {
+  content: "\e917";
+}
+.icon-user:before {
+  content: "\e918";
+}
+.icon-visit-profile .path1:before {
+  content: "\e919";
+}
+.icon-visit-profile .path2:before {
+  content: "\e91a";
+  margin-left: -1em;
+}
+.icon-vote:before {
+  content: "\e921";
+}
+.icon-notif:before {
+  content: "\e901";
+}
+.icon-pref:before {
+  content: "\e902";
+}
+.icon-Logo:before {
+  content: "\e900";
+  color: #2a6bee;
+}
+.icon-pencil:before {
+  content: "\e905";
+}
+.icon-bin:before {
+  content: "\e9ac";
+}
+.icon-plus:before {
+  content: "\e906";
+}
+.icon-loop2:before {
+  content: "\ea2e";
+}
+.icon-checkmark:before{
+  content: "\ea10";
+}
+.icon-loop2:before {
+  content: "\ea2e";
+}
+.is-checked,
+.icon-checkbox-checked:before {
+  content: "\ea52";
+}
+.icon-uniE919:before {
+  content: "\e919";
+}
+.icon-search:before {
+  content: "\e909";
+}
+.icon-anonymous:before {
+  content: "\e90b";
+}
+.icon-publish:before {
+  content: "\e90a";
+}
+.icon-crown:before {
+  content: "\e90c";
+}
+.icon-clipboard:before {
+  content: "\e90d";
+}

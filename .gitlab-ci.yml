@@ -1,0 +1,20 @@
+
+
+
+init-db:
+  tags:
+    - lyon1
+  stage: build
+  script: mvn clean initialize exec:exec@init_db -Dmysql.root.password=sZavazni2017
+
+sonarqube:
+  tags:
+    - lyon1
+  stage: test
+  script: mvn sonar:sonar
+
+tomcat:
+  tags:
+    - lyon1
+  stage: deploy
+  script: mvn clean install exec:exec@load_test_dump tomcat7:redeploy -Dmysql.root.password=sZavazni2017

@@ -1,0 +1,266 @@
+.statistics-cntr {
+	//padding: 20px;
+}
+
+.graphic-stat {
+	//background-color: rgba($black, 0.05);
+
+	height: 250px;
+	width: 250px;
+	max-width: 100%;
+}
+
+.graphic-counter-cntr{
+	padding: 10px;
+
+	font-weight: 500;
+	font-size: rem(12);
+	font-style: italic;
+	color: $light-grey;
+}
+
+.graphic-cntr {
+	display: flex;
+	justify-content: space-between;
+
+	.grid-half{
+		display: flex;
+		justify-content: center;
+
+		width: 100%;
+		max-width: 50%;
+
+		.graphic-info-cntr{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+
+			width: 100%;
+			max-width: none;
+		}
+	}
+
+	.counter-total {
+		position: absolute;
+		left: calc(50% - 25px);
+		top: calc(50% - 25px);
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		align-content: center;
+		text-align: center;
+
+		font-size: rem(23);
+		line-height: rem(50);
+		font-weight: 700;
+		font-family: 'Raleway', sans-serif;
+		font-stretch: condensed;
+
+		height: 50px;
+		width: 50px;
+
+		transition: all 0.2s linear;
+
+		@each $i in $graphicPalette{
+			$var: map-get($graphicColors, $i);
+
+			&.#{$i}_color {
+				color: $var;
+			}
+		}
+	}
+
+	.graphic-svg {
+		position: relative;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		cursor: pointer;
+		max-width: 50%;
+
+		svg{
+			display: block;
+
+			path, circle{
+				position: relative;
+				z-index: 0;
+
+				stroke-width: 40px;
+
+				transform-origin: center;
+				//transition: all 0.1s linear, transform 0.2s linear, stroke-dasharray 1s linear, stroke-dashoffset 1s linear;
+				//transition: stroke-width 0.1s linear;
+				animation: donut-show 900ms ease 0ms forwards;
+
+				&.animate-circle{
+					stroke-dasharray: 238.76104;
+					stroke-dashoffset: 238.76104;
+
+					transition: transform 3s linear;
+				}
+
+				&:not(.circle-background):hover{
+					//transform: scale(1.1);
+					stroke-width: 46px;
+					transform-origin: center;
+					//transition: stroke-width 0.1s ease-in;
+				}
+			}
+
+			.circle-background{
+				height: 100%;
+				width: 100%;
+
+				fill: none;
+
+				stroke-opacity: 0.2;
+				stroke: $light-grey;
+			}
+
+			.circle-progress{
+				height: 100%;
+				width: 100%;
+
+				fill: none;
+
+				@each $i in $graphicPalette{
+					$var: map-get($graphicColors, $i);
+
+					&.circle-color_#{$i}{
+						stroke: $var;
+					}
+				}
+			}
+		}
+	}
+
+	.graphic-info-cntr {
+		display: block;
+		align-self: center;
+
+		margin: 0;
+		padding: 0;
+
+		max-width: 50%;
+		height: 100%;
+		width: 100%;
+
+		.graphic-info-item {
+			display: flex;
+			align-items: center;
+			padding: 10px;
+
+			width: 100%;
+
+			font-weight: 600;
+			font-size: rem(14);
+
+			list-style: none;
+			transition: background 0.1s linear;
+
+			cursor: pointer;
+
+			@each $i in $graphicPalette {
+				$var: map-get($graphicColors, $i);
+
+				&[data-color=#{$i}] {
+					//color: $var;
+
+					.graphic-info-item__color {
+						border: 2px $var solid;
+					}
+
+					&.is-active {
+						background-color: $var;
+
+						@if $i == yellow {
+							color: $black;
+						} @else if $i == green {
+							color: $black;
+						} @else {
+							color: white;
+						}
+
+						.graphic-info-item__color{
+							border: 2px white solid;
+						}
+					}
+				}
+			}
+
+			&.is-active{
+				text-decoration: underline;
+			}
+
+			&:not(:first-child){
+				margin-top: 10px;
+			}
+
+			&.is-winner{
+				position: relative;
+				border: 1px $soft-grey solid;
+				border-radius: 3px !important;
+
+				&:before{
+					position: absolute;
+					left: -8px;
+					top: -8px;
+
+					display: flex;
+					justify-content: center;
+					align-content: center;
+					align-items: center;
+
+					height: 15px;
+					width: 15px;
+					background-color: $main;
+
+					color: $yellow;
+					font-size: rem(11);
+					text-align: center;
+
+					font-family: 'icomoon' !important;
+					speak: none;
+					font-style: normal;
+					font-weight: normal;
+					font-variant: normal;
+					text-transform: none;
+					line-height: 1;
+					-webkit-font-smoothing: antialiased;
+					-moz-osx-font-smoothing: grayscale;
+
+					content: "\e90c";
+					border-radius: 15px;
+
+					transform: rotateZ(-30deg);
+					transform-origin: center;
+					-webkit-font-smoothing: subpixel-antialiased;
+					animation: twiggle 1s linear 0s infinite alternate;
+				}
+			}
+		}
+
+		.graphic-info-item__color {
+			display: inline-block;
+			margin-right: 20px;
+
+			height: 12px;
+			width: 12px;
+			min-width: 12px;
+
+			border: 2px rgba($black, 0.05) solid;
+			border-radius: 12px;
+		}
+
+		.graphic-info-item__label {
+			sup{
+				font-size: 10px;
+				font-weight: 800;
+			}
+		}
+
+	}
+}

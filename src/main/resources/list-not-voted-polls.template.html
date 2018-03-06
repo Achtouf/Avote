@@ -1,0 +1,82 @@
+#if($pollList.size() > 0)
+<div class="grid-row">
+    <div class="grid__element ge__1-of-4 grid__element-less element-list">
+      <div class="list-scroll">
+        #foreach($poll in $pollList)
+          #if( $foreach.index > 0 )
+            #if( $poll.isAnonymous() )
+              <div class="element__item is-anonymous" id="item-selector-$poll.pollId" data-id="$poll.pollId" data-target="#vote-box-cntr-$poll.pollId">
+                <div>$poll.subject</div>
+                <div class="tiny-text">$poll.owner.getLastName() $poll.owner.getFirstName()</div>
+          	  <div class="btn btn-neutral anonymous-btn btn-in-item" data-id="4" disabled title="anonyme"><span class="icon-anonymous"></span></div>
+              </div>
+            #else
+              <div class="element__item" id="item-selector-$poll.pollId" data-id="$poll.pollId" data-target="#vote-box-cntr-$poll.pollId">
+                <div>$poll.subject</div>
+                <div class="tiny-text">$poll.owner.getLastName() $poll.owner.getFirstName()</div>
+              </div>
+            #end
+          #else
+            #if( $poll.isAnonymous() )
+              <div class="element__item is-active is-anonymous" id="item-selector-$poll.pollId" data-id="$poll.pollId" data-target="#vote-box-cntr-$poll.pollId">
+                <div>$poll.subject</div>
+                <div class="tiny-text">$poll.owner.getLastName() $poll.owner.getFirstName()</div>
+          	  <div class="btn btn-neutral anonymous-btn btn-in-item" data-id="4" disabled title="anonyme"><span class="icon-anonymous"></span></div>
+              </div>
+            #else
+              <div class="element__item is-active" id="item-selector-$poll.pollId" data-id="$poll.pollId" data-target="#vote-box-cntr-$poll.pollId">
+                <div>$poll.subject</div>
+                <div class="tiny-text">$poll.owner.getLastName() $poll.owner.getFirstName()</div>
+              </div>
+            #end
+          #end
+        #end
+      </div>
+    </div>
+
+    <div class="grid__element ge__3-of-4 grid__element-less grid-col">
+        #foreach($poll in $pollList)
+        #if( $foreach.index > 0 )
+        <div class="grid__element big-cntr is-hidden">
+            #else
+            <div class="grid__element big-cntr">
+                #end
+                <div class="form-col-cntr" id="vote-box-cntr-$poll.pollId">
+                    <div class="form-col-cntr">
+                        #if ( $poll.pollType == "STANDARD" )
+                          #foreach($choice in $poll.choices)
+                          <div class="checkbox-btn-cntr">
+                            <span class="checkbox-btn votable-choice" input-target="#voting-poll-$poll.getPollId()-choice-$choice.choiceId" data-label="$choice.label"
+                                  data-id="$choice.choiceId">
+                              <input type="checkbox" class="is-hidden" id="voting-poll-$poll.getPollId()-choice-$choice.choiceId" data-label="$choice.label" data-id="$choice.choiceId">
+                            </span>
+                              $choice.label
+                          </div>
+                          #end
+                        #else
+                          #foreach($choice in $poll.choices)
+                          <span class="votable-choice-with-note" input-target="#voting-notes-$poll.getPollId()-choice-$choice.getChoiceId()" data-label="$choice.label" data-id="$choice.choiceId">
+                            <span class="rate-btn-label">$choice.label</span>
+                            <div class="rate-btn-cntr" id="voting-notes-cntr-choice-$choice.getChoiceId()" vote-choice-value="1" poll-id="$poll.pollId" choice-id="$choice.choiceId" data-choice-label="$choice.label">
+                              #foreach ($i in [1..$poll.pollType.choiceValueLimit] )
+                                <span class="rate-btn" input-role="rating" input-target="#voting-poll-3-choice-2590" data-value="$i" id="voting-notes-$poll.getPollId()-choice-$choice.getChoiceId()">
+                                </span>
+                              #end
+                            </div>
+                          </span>
+                        #end
+                        <div class="form-row-cntr align-right">
+                          <input type="submit" class="submit-input" id="vote-form-update-$poll.pollId" submit-type="1" value="Voter">
+                        </div>
+                      #end
+                    </div>
+                </div>
+            </div>
+            #end
+        </div>
+    </div>
+    #else
+    <div class="grid-row">
+        Aucun scrutin.
+    </div>
+    #end

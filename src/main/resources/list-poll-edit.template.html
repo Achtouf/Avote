@@ -1,0 +1,110 @@
+#if( $pollList.size() > 0 )
+    <div class="grid-row">
+        <div class="grid__element ge__1-of-4 grid__element-less element-list">
+            <div class="list-scroll">
+            #foreach( $poll in $pollList )
+                #if($foreach.index > 0)
+                    <div class="element__item" id="info-info-$poll.pollId" data-id="$poll.pollId" data-unit="normal">$poll.subject</div>
+                #else
+                    <div class="element__item is-active" id="vote-info-$poll.pollId" data-id="$poll.pollId" data-unit="normal">$poll.subject</div>
+                #end
+            #end
+          </div>
+        </div>
+        <div class="grid__element ge__3-of-4 grid__element-less grid-col">
+        #foreach( $poll in $pollList )
+            #if($foreach.index > 0)
+                <div class="grid__element grid-col is-hidden big-cntr">
+            #else
+                <div class="grid__element grid-col big-cntr">
+            #end
+                    <div class="vote-cntr grid-col" id="vote-cntr-form-$poll.pollId" data-id="$poll.pollId">
+                        <form class="form-cntr" id="form-update-$poll.pollId" id-data="$poll.pollId">
+                            <div class="form-col-cntr">
+                                <label for="poll-subject-$poll.pollId">Sujet</label>
+                                <input type="text" id="poll-subject-$poll.pollId" name="poll-subject-$poll.pollId" value="$poll.subject">
+                            </div>
+
+                            <div class="form-row-cntr">
+                                <div class="form-col-cntr half-cntr">
+                                    <div class="form-row-cntr toggle-btn-cntr">
+                                    <span class="toggle-btn" id="poll-anonyme-$poll.pollId">
+                                        <i class="slider"></i>
+                                    </span>
+                                        Anonyme
+                                    </div>
+
+                                    <div class="form-col-cntr">
+                                        <label for="poll-type-$poll.pollId">Type</label>
+                                        <select name="poll-type-$poll.pollId" id="poll-type-$poll.pollId">
+                                            <option value="STANDARD" #if($poll.getPollType() == 0) selected="selected" #end>Standard</option>
+                                            <option value="NOTE" #if($poll.getPollType() == 1) selected="selected" #end >Note</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-col-cntr">
+                                        <label for="poll-number-rounds-$poll.pollId">Nombre de tours</label>
+                                        <input type="number" id="poll-number-rounds-$poll.pollId" name="poll-number-rounds-$poll.pollId" value="$poll.numberRounds">
+                                    </div>
+                                </div>
+                                <div class="form-col-cntr half-cntr">
+                                    <div class="form-row-cntr toggle-btn-cntr">
+                                        <span class="toggle-btn" id="poll-restriction-btn-$poll.pollId" data-target="#poll-restriction-form-$poll.pollId">
+                                            <i class="slider"></i>
+                                        </span>
+                                        Restrictions
+                                    </div>
+
+                                    <div class="form-col-cntr is-hidden" id="poll-restriction-form-$poll.pollId">
+                                        <div class="form-col-cntr">
+                                            <label for="poll-restriction-min-age-$poll.pollId">Age minimal</label>
+                                            <input type="number" id="poll-restriction-min-age-$poll.pollId" value="$poll.restriction.ageMin">
+                                        </div>
+
+                                        <div class="form-col-cntr">
+                                            <label for="poll-restriction-max-age-$poll.pollId">Age maximal</label>
+                                            <input type="number" id="poll-restriction-max-age-$poll.pollId" value="$poll.restriction.ageMax">
+                                        </div>
+
+                                        <div class="form-row-cntr">
+                                            <div class="form-col-cntr half-cntr">
+                                                <label for="poll-restriction-city-$poll.pollId">Ville</label>
+                                                <input type="text" id="poll-restriction-city-$poll.pollId" value="$poll.restriction.city">
+                                            </div>
+
+                                            <div class="form-col-cntr half-cntr">
+                                                <label for="poll-restriction-department-$poll.pollId">Département</label>
+                                                <input type="text" id="poll-restriction-department-$poll.pollId" value="$poll.restriction.department">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-col-cntr">
+                                #foreach($choice in $poll.getChoices())
+                                    <div class="form-col-cntr choice-form">
+                                        <label for="poll-choice-$choice.choiceId">Choix $choice.choiceId</label>
+                                        <input type="text" id="poll-choice-$choice.choiceId" name="poll-choice-$poll.pollId-$choice.choiceId" data-input="choice" data-target="poll-choice-$poll.pollId" value="$choice.label" class="is-filled">
+                                        <input type="text" id="poll-choice-$choice.choiceId-color-$choice.choiceId" class="color-input is-hidden" name="poll-color-$choice.choiceId" value="$choice.color">
+                                    </div>
+                                #end
+                                <button id="add-choice-poll-form-$poll.pollId" class="btn btn-info align-right">
+                                    <span class="icon-plus"></span>
+                                </button>
+                            </div>
+
+                            <div class="form-row-cntr align-right">
+                                <input type="submit" class="submit-input" id="save-poll-$poll.pollId" value="Enregistrer">
+                                <button type="submit" class="submit-btn success-btn" id="publish-poll-$poll.pollId">Publier</button>
+                            </div>
+                        </form>
+                    </div>
+            </div>
+        #end
+    </div>
+#else
+    <div class="grid-row">
+        Aucun scrutin.
+    </div>
+#end

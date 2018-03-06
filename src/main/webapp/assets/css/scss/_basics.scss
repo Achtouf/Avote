@@ -1,0 +1,574 @@
+@import "fonts";
+@import "mixins";
+@import "reset";
+
+$main: #2A6BEE;
+$premium: #daab31;
+
+$light-green: #43EB8C;
+$light-blue: #3f92eb;
+
+$shadow : 0 1px 11px 0 rgba(0, 0, 0, 0.06), 0 2px 23px 0 rgba(0, 0, 0, 0.21);
+
+//other colors
+$blue-azure: #10d0ff;
+
+//light colors
+$pink: #ff5587;
+$red: #FF5A60;
+//$green: #2ED345;
+$green: #38e66d;
+$yellow: #ece506;
+$orange: #FF8227;
+$purple: #B851DC;
+$blue: #2E9CFF;
+$black: #141414;
+
+//dark colors
+$dark-pink: #ff1c89;
+$dark-red: #FF3030;
+$dark-green: #18A32B;
+$dark-yellow: #C6BF00;
+$dark-orange: #ED7000;
+$dark-purple: #801AA3;
+$dark-blue: #1303c1;
+$dark-black: #141414;
+
+$dark-brown: #824f11;
+$brown: #ab620a;
+
+//grey
+$dark-grey: #303030;
+$medium-grey: #404040;
+$grey: #808080;
+$light-grey: #adadad;
+$soft-grey: #e2e2e2;
+
+
+// PALETTES
+$graphicPalette: pink red green yellow orange purple blue brown grey blue-azure light-green dark-red dark-pink dark-green dark-yellow dark-orange dark-purple dark-blue dark-black dark-brown dark-grey main;
+$graphicColors: (
+  light-green: $light-green,
+  blue-azure: $blue-azure,
+  pink: $pink,
+  red: $red,
+  green: $green,
+  yellow: $yellow,
+  orange: $orange,
+  purple: $purple,
+  blue: $blue,
+  dark-red : $dark-red,
+  dark-pink : $dark-pink,
+  dark-green : $dark-green,
+  dark-yellow : $dark-yellow,
+  dark-orange : $dark-orange,
+  dark-purple : $dark-purple,
+  dark-black : $dark-black,
+  dark-blue : $dark-blue,
+  dark-brown : $dark-brown,
+  brown : $brown,
+  grey : $grey,
+  dark-grey : $dark-grey,
+  main: $main
+);
+
+// BASICS
+* {
+  box-sizing: border-box;
+  //transition: all 0.2s linear;
+
+  &::-webkit-scrollbar-track{
+    background-color: #dadada;
+  }
+
+  &::-webkit-scrollbar{
+    width: 7px;
+    background-color: #F5F5F5;
+  }
+
+  &::-webkit-scrollbar-thumb{
+    background-color: $black;
+  }
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+
+  height: 100vh;
+  width: 100vw;
+
+  background-color: white;
+}
+
+.basic-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+input, a {
+  font-family: 'Raleway', sans-serif;
+}
+
+.is-hidden {
+  display: none;
+}
+
+.padding-less{
+  padding: 0 !important;
+}
+
+h3 {
+  margin: 0 0 20px;
+  font-size: rem(20);
+  font-weight: 700;
+  color: $main;
+  text-transform: uppercase;
+}
+
+.toggle-btn {
+  position: relative;
+
+  display: inline-flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 8px;
+
+  width: 24px;
+  height: 16px;
+
+  //background-color: $light-grey;
+  background-color: $medium-grey;
+  border: 1px $medium-grey solid;
+  border-radius: 30px;
+  vertical-align: bottom;
+  transition: align-self 0.2s linear;
+
+  .slider {
+    position: relative;
+    left: 2px;
+    //top: 1px;
+
+    display: block;
+
+    width: 10px;
+    height: 10px;
+
+    border-radius: 10px;
+    background-color: white;
+    transition: all 0.2s linear;
+  }
+
+  &.is-active {
+    background-color: $main;
+    border-color: $main;
+
+    .slider {
+      left: calc(50% - 1px);
+    }
+  }
+}
+
+.checkbox-btn-cntr{
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.checkbox-btn{
+  display: block;
+  margin-right: 20px;
+
+  width: 20px;
+  height: 20px;
+
+  background-color: $soft-grey;
+  border-radius: 3px;
+  cursor: pointer;
+  border: 1px $light-grey solid;
+  overflow: hidden;
+
+  &.is-checked{
+    position: relative;
+
+    background-color: $main;
+
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    border: none;
+
+    &:before{
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 10;
+
+      display: block;
+      content: "\ea10";
+
+      font-size: 12px;
+      color: white;
+      text-align: center;
+      line-height: 20px;
+    }
+  }
+}
+
+.votable-choice-with-note{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+  padding: 10px 10px 10px 15px;
+
+  border-left: 2px $main solid;
+
+  & + .form-row-cntr{
+    margin-top: 20px;
+  }
+
+  .rate-btn-label{
+    margin-right: 15px;
+    margin-bottom: 10px;
+
+    //min-width: 30%;
+  }
+}
+
+$childColors: red orange dark-yellow blue main;
+$childKeys: "1" "2" "3" "4" "5";
+$ratingColor: (
+  "1": $red,
+  "2": $orange,
+  "3": $dark-yellow,
+  "4": $blue,
+  "5": $main
+);
+
+$ratingColorPalette: (
+  red: $red,
+  orange: $orange,
+  dark-yellow: $dark-yellow,
+  blue: $blue,
+  main: $main
+);
+
+.rate-btn-cntr{
+  display: flex;
+  align-items: center;
+
+  @each $i in $childColors{
+    $var: map-get($ratingColorPalette, $i);
+    $j: 0;
+
+    @if $i == red{
+      $j: 2;
+    }
+    @if $i == orange{
+      $j: 3;
+    }
+    @if $i == dark-yellow{
+      $j: 4;
+    }
+    @if $i == blue{
+      $j: 5;
+    }
+    @if $i == main{
+      $j: 6;
+    }
+
+    &.is-#{$i}{
+      @for $k from 1 to $j{
+        .rate-btn:nth-child(#{$k}){
+          border: 4px $var solid !important;
+        }
+      }
+    }
+  }
+}
+
+.rate-btn{
+  display: block;
+  margin-right: 10px;
+
+  width: 14px;
+  height: 14px;
+
+  background-color: $soft-grey;
+  border-radius: 20px;
+  cursor: pointer;
+  //border: 1px $light-grey solid;
+  overflow: hidden;
+
+  &:hover,
+  &.is-filled{
+    position: relative;
+
+    //background-color: $main;
+    border: 2px $main solid;
+    //transition: all 0.1s linear;
+  }
+
+  @each $i in $childColors{
+    $var: map-get($ratingColorPalette, $i);
+
+    &.is-#{$i}{
+      border: 4px $var solid !important;
+    }
+  }
+
+  @each $i in $childKeys{
+    $var: map-get($ratingColor, $i);
+
+    &:nth-child(#{$i}){
+      &:hover,
+      &.is-filled{
+        border: 4px $var solid !important;
+      }
+    }
+  }
+}
+
+.body-notification-cntr {
+  position: fixed;
+  z-index: 1000;
+  right: 20px;
+  top: 74px;
+
+  max-width: 350px;
+  width: 100%;
+
+  //background-color: rgba($black, 0.1);
+
+  .body-notification {
+    position: relative;
+
+    padding: 15px;
+
+    border-radius: 5px;
+
+    strong {
+      display: block;
+      margin-bottom: 5px;
+
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: rem(15);
+      letter-spacing: 1px;
+      color: rgba($black, 0.9);
+    }
+
+    b{
+      font-weight: 700;
+    }
+
+    p {
+      margin: 0;
+      padding: 0;
+
+      font-size: rem(12);
+      font-weight: 500;
+
+      a {
+        font-weight: 700;
+        text-transform: none;
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+
+    [data-dismiss="alert"] {
+      position: absolute;
+      top: 3px;
+      right: 3px;
+
+      height: 20px;
+      width: 20px;
+
+      font-size: rem(23);
+      font-weight: 800;
+      color: rgba($black, 0.5);
+      line-height: 20px;
+      text-align: center;
+      text-transform: none;
+      text-decoration: none;
+    }
+
+    &.error-notif,
+    &.danger-notif {
+      background-color: rgba($red, 0.9);
+    }
+
+    &.succes-notif,
+    &.success-notif {
+      background-color: rgba($green, 0.9);
+    }
+
+    &.info-notif {
+      background-color: rgba($blue, 0.9);
+    }
+
+    &.warning-notif {
+      background-color: rgba($yellow, 0.9);
+    }
+  }
+}
+
+.tiny-text{
+  font-size: rem(12);
+  font-weight: 800;
+  margin-top: 3px;
+  color: $main;
+}
+
+
+.submit-input,
+input[type="submit"]{
+  &.success-submit{
+    background-color: $dark-green;
+  }
+
+  &.warn-submit{
+    background-color: $yellow;
+  }
+
+  &.error-submit{
+    background-color: $red;
+  }
+}
+
+
+.btn[disabled]{
+  padding: 8px;
+
+  width: 30px;
+  height: 30px;
+
+  font-size: rem(15);
+  font-weight: 800;
+  color: $grey;
+
+  border: none;
+  border-radius: 3px;
+
+  background-color: white;
+
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+}
+
+.btn:not([disabled]){
+  padding: 8px;
+
+  width: 30px;
+  height: 30px;
+
+  font-size: rem(15);
+  font-weight: 800;
+
+  border: none;
+  border-radius: 3px;
+
+  background-color: white;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s linear;
+
+  &.normal-btn{
+    width: auto;
+    height: auto;
+  }
+
+  &:active,
+  &:focus{
+    outline: 0;
+  }
+
+  &.btn-default{
+    color: $black;
+
+    &.is-hovered,
+    &:not(.no-hover):hover{
+      background-color: $main;
+    }
+  }
+
+  &.btn-neutral{
+    color: $light-grey;
+  }
+
+  &.btn-error{
+    color: $red;
+
+    &.is-hovered,
+    &:not(.no-hover):hover{
+      background-color: $red;
+    }
+  }
+
+  &.btn-success{
+    color: $green;
+
+    &.is-hovered,
+    &:not(.no-hover):hover{
+      background-color: $green;
+    }
+  }
+
+  &.btn-info{
+    color: $light-blue;
+
+    &.is-hovered,
+    &:not(.no-hover):hover{
+      background-color: $light-blue;
+    }
+  }
+
+  &.btn-warn{
+    color: $yellow;
+
+    &.is-hovered,
+    &:not(.no-hover):hover{
+      background-color: $yellow;
+    }
+  }
+
+  &.is-hovered,
+  &:not(.no-hover):hover{
+    background-color: $main;
+    color: white;
+  }
+
+  & + .btn{
+    margin-left: 10px;
+  }
+}

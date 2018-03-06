@@ -1,0 +1,75 @@
+#if( $pollList.size() > 0 )
+<div class="grid-row">
+    <div class="grid__element ge__1-of-4 grid__element-less element-list">
+      <div class="list-scroll">
+        #foreach( $poll in $pollList )
+          #if($foreach.index > 0)
+            <div class="element__item" id="graphic-info-$poll.pollId" data-id="$poll.pollId" data-unit="normal" data-target="#graphic-cntr-$poll.pollId">
+                <div>$poll.subject</div>
+                <div class="tiny-text">$poll.owner.getLastName() $poll.owner.getFirstName()</div>
+            </div>
+          #else
+            <div class="element__item is-active" id="graphic-info-$poll.pollId" data-id="$poll.pollId" data-unit="normal" data-target="#graphic-cntr-$poll.pollId">
+                <div>$poll.subject</div>
+                <div class="tiny-text">$poll.owner.getLastName() $poll.owner.getFirstName()</div>
+            </div>
+          #end
+        #end
+      </div>
+    </div>
+    <div class="grid__element ge__3-of-4 grid__element-less grid-col">
+        #foreach( $poll in $pollList )
+        #if($foreach.index > 0)
+        <div class="grid__element big-cntr is-hidden">
+            #else
+              <div class="grid__element big-cntr">
+                  #end
+                  <div class="statistics-cntr">
+                    #if ( $poll.pollType == "NOTE" )
+                      <div class="graphic-counter-cntr">Nombre de votes : $poll.getChoices().get(0).getVotes().size()</div>
+                    #end
+                    <div class="graphic-cntr" id="graphic-cntr-$poll.pollId" data-id="$poll.pollId" data-unit="percent" data-type="$poll.pollType">
+                        #if ( $poll.pollType == "STANDARD" )
+                        <ul class="graphic-info-cntr">
+                            #foreach( $choice in $poll.getChoices() )
+                              <li class="graphic-info-item" data-label="$choice.label" data-count="$choice.getVotes().size()" data-color="$choice.color">
+                                <span class="graphic-info-item__color"></span>
+                                <span class="graphic-info-item__label">$choice.label</span>
+                              </li>
+                            #end
+                        </ul>
+                        #else
+                        <div class="grid-col grid-half">
+                          <ul class="graphic-info-cntr">
+                          #if(! $poll.getChoices().get(0).getVotes().isEmpty())
+	                          #foreach( $choice in $poll.getChoices() )
+	                          	#if($poll.getMajorWinner().getChoiceId() == $choice.getChoiceId())
+		                          <li class="graphic-info-item is-winner" data-label="$choice.label" data-count="$choice.getAverageVote()" data-color="$choice.color">
+	                          	#else
+		                          <li class="graphic-info-item" data-label="$choice.label" data-count="$choice.getAverageVote()" data-color="$choice.color">
+	                          	#end
+		                              <span class="graphic-info-item__color"></span>
+		                              <span class="graphic-info-item__label">$choice.label</span>
+		                          </li>
+	                          #end
+                          #else
+                              #foreach( $choice in $poll.getChoices() )
+                              <li class="graphic-info-item" data-label="$choice.label" data-count="$choice.getAverageVote()" data-color="$choice.color">
+                                  <span class="graphic-info-item__color"></span>
+                                  <span class="graphic-info-item__label">$choice.label</span>
+                              </li>
+                              #end
+                          #end
+                          </ul>
+                        </div>
+                        #end
+                    </div>
+                  </div>
+              </div>
+            #end
+        </div>
+        #else
+        <div class="grid-row">
+            Aucun scrutin.
+        </div>
+        #end

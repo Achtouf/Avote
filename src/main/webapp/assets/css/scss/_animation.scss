@@ -1,0 +1,55 @@
+// VOTING ANIMATION
+.voting-animation{
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+  height: 100%;
+  width: 100%;
+  //min-height: 400px;
+  //min-width: 400px;
+
+  //background-color: white;
+  opacity: 0;
+
+  svg{
+    max-width: 450px;
+  }
+
+  &.is-active{
+    opacity: 1;
+    transition: opacity 0.25s linear 0.1s;
+
+    #animation-vote{
+      transform: translateY(90px);
+      transition: transform 0.25s linear 0.5s;
+    }
+
+    .logo-animation{
+      opacity:1;
+      transition: opacity 0.5s linear 1s;
+    }
+  }
+}
+
+.logo-animation{
+  position: absolute;
+  top: 35px;
+  left: 0;
+  right: 0;
+
+  margin: auto;
+
+  width:100%;
+
+  color: $main;
+  font-size: rem(75);
+  text-align: center;
+  line-height: 1;
+
+  opacity: 0;
+}
